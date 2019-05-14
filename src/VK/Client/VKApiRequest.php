@@ -111,6 +111,14 @@ class VKApiRequest {
     }
 
     /**
+     * @return CurlHttpClient
+     */
+    public function getHttpClient()
+    {
+        return $this->http_client;
+    }
+
+    /**
      * Decodes the response and checks its status code and whether it has an Api error. Returns decoded response.
      *
      * @param TransportClientResponse $response

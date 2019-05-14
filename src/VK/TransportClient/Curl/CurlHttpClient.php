@@ -29,6 +29,14 @@ class CurlHttpClient implements TransportClient {
     }
 
     /**
+     * @param array $initial_opts
+     */
+    public function setInitialOpts(array $initial_opts)
+    {
+        $this->initial_opts = $initial_opts;
+    }
+
+    /**
      * Makes post request.
      *
      * @param string $url
@@ -99,10 +107,10 @@ class CurlHttpClient implements TransportClient {
 
         $curl_error_code = curl_errno($curl);
         $curl_error = curl_error($curl);
-      
+
         $http_status = curl_getinfo($curl, CURLINFO_RESPONSE_CODE);
         curl_close($curl);
-        
+
         if ($curl_error || $curl_error_code) {
             $error_msg = "Failed curl request. Curl error {$curl_error_code}";
             if ($curl_error) {
